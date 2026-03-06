@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const startDate = new Date("2026-02-02");
+const startDate = new Date("2026-03-08");
 
 const quotes = [
+  "31 days to go.. The countdown begins for a person who deserve more than just one day of celebration.",
   "30 days left… Your presence itself feels like a gift.",
   "29 days to go… You remind me that good hearts still exist.",
   "28 days left… I may not say it often, but your presence means more than you know.",
@@ -34,7 +35,7 @@ const quotes = [
   "3 days to go… Some people are easy to forget. You are not one of them.",
   "2 days left… Almost your moment.",
   "1 day to go… Tomorrow the queen shines.",
-  "Today isn’t just about candles and wishes. It’s about celebrating the rare soul who makes life better just by existing. May your life always reflect the light you bring into others"
+  "The wait is over. Today we celebrates you, this isn’t just about candles and wishes. It’s about celebrating the rare soul who makes life better just by existing. May your life always reflect the light you bring into others"
 ];
 
 export default function DailyQuotes() {
@@ -44,7 +45,7 @@ export default function DailyQuotes() {
     const today = new Date();
     const diffDays = Math.floor(
       (today.getTime() - startDate.getTime()) /
-        (1000 * 60 * 60 * 24)
+      (1000 * 60 * 60 * 24)
     );
 
     if (diffDays >= 0 && diffDays < quotes.length) {

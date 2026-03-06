@@ -26,12 +26,13 @@ export default function App() {
   const songs = [
     "/saga.mp3",
     "/oorumblood.mp3",
+    "/unfinished.mp3",
     "/kannukula.mp3",
     "/neelothi.mp3",
     "/jaalakaari.mp3",
   ];
   const birthdaySong = "/malareninne.mp3";
-  const birthdayDate = new Date("2026-03-05T00:00:00");
+  const birthdayDate = new Date("2026-04-08T00:00:00");
 
   const [currentSong, setCurrentSong] = useState("");
 
@@ -45,7 +46,7 @@ export default function App() {
     ) {
       setCurrentSong(birthdaySong);
     } else {
-      const startDate = new Date("2026-02-03T00:00:00");
+      const startDate = new Date("2026-03-08T00:00:00");
       const diffTime = now.getTime() - startDate.getTime();
       const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
       const index = Math.floor(diffDays / 5) % songs.length;
@@ -177,8 +178,8 @@ export default function App() {
             {!unlocked && (
               <>
                 <Countdown
-                  unlockDate="2026-03-05"
-                  fromDate="2026-02-03"
+                  unlockDate="2026-04-08"
+                  fromDate="2026-03-08"
                   onUnlock={() => {
                     setUnlocked(true);
                     confetti({ particleCount: 150, spread: 100 });
