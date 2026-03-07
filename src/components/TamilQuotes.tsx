@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const startDate = new Date("2026-03-08");
+const startDate = new Date("2026","2","8");
 
 const quotes = [
   "31 days to go.. The countdown begins for a person who deserve more than just one day of celebration.",
@@ -43,8 +43,13 @@ export default function DailyQuotes() {
 
   useEffect(() => {
     const today = new Date();
+    today.setHours(0,0,0,0)
+
+    const start = new Date(2026,2,8);
+    start.setHours(0,0,0,0)
+
     const diffDays = Math.floor(
-      (today.getTime() - startDate.getTime()) /
+      (today.getTime() - start.getTime()) /
       (1000 * 60 * 60 * 24)
     );
 
