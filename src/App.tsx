@@ -26,7 +26,6 @@ export default function App() {
   const songs = [
     "/saga.mp3",
     "/oorumblood.mp3",
-    "/unfinished.mp3",
     "/kannukula.mp3",
     "/neelothi.mp3",
     "/jaalakaari.mp3",
