@@ -26,7 +26,7 @@ export default function App() {
   const songs = [
     "/saga.mp3",
     "/oorumblood.mp3",
-    "/kannukula.mp3",
+    "/kannukulla.mp3",
     "/neelothi.mp3",
     "/jaalakaari.mp3",
   ];
@@ -60,12 +60,13 @@ export default function App() {
     if (!audio) return;
 
     audio.volume = 0.7;
-
+    console.log("aduio :", audio)
     const tryPlay = async () => {
       try {
         await audio.play();
         setShowContent(true); // autoplay allowed → show content immediately
       } catch {
+        console.log("else")
         setAutoplayBlocked(true); // autoplay blocked → show overlay
       }
     };
