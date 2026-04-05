@@ -423,3 +423,209 @@ html{
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
+
+.journey-container {
+  /* padding: 60px 20px; */
+  text-align: center;
+}
+
+.timeline {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #ff4d8d;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.timeline-item p {
+  margin: 0;
+}
+
+
+/* Cinematic Overlay */
+.cinematic-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.cinematic-content {
+  text-align: center;
+  font-size: 36px;
+  color: white;
+  text-shadow: 0 0 20px #ff9ecf, 0 0 40px #7CFFB2;
+}
+
+.birthday-name {
+  font-size: 60px;
+  background: linear-gradient(135deg,#ff9ecf,#7CFFB2);
+  -webkit-background-clip: text;
+  color: transparent;
+  display: block;
+  margin-top: 20px;
+}
+
+
+.cinematic-container {
+  height: 25vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* padding: 20px; */
+}
+
+.cinematic-text {
+  font-size: 28px;
+  color: white;
+  max-width: 600px;
+  line-height: 1.6;
+
+  /* glow */
+  text-shadow: 0 0 10px rgba(255,255,255,0.6),
+               0 0 20px rgba(255,77,141,0.4);
+
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  animation: gradientMove 12s ease infinite;
+}
+
+
+/* src/components/VoiceMemories.css */
+
+.voice-memory-container {
+  text-align: center;
+}
+
+.voice-memory-container h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.voice-intro {
+  margin: 15px 0 30px;
+  opacity: 0.8;
+}
+
+.memory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.memory-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-5px);
+}
+
+.memory-card.active {
+  box-shadow: 0 0 20px rgba(255, 77, 141, 0.6);
+  border: 1px solid rgba(255, 77, 141, 0.5);
+  transform: scale(1.03);
+}
+
+.memory-text {
+  margin-bottom: 10px;
+}
+
+.memory-card button {
+  margin-top: 10px;
+  background: #ff4d8d;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.memory-card button:active {
+  transform: scale(0.95);
+}
+
+/* 🎵 Wave Animation */
+.wave {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.wave span {
+  width: 4px;
+  height: 12px;
+  background: #ff4d8d;
+  animation: wave 1s infinite ease-in-out;
+}
+
+.wave span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.wave span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(2);
+  }
+}
+
+/* Ending text */
+.voice-ending {
+  margin-top: 40px;
+  opacity: 0.8;
+}

@@ -8,20 +8,24 @@ import MusicToggle from "./components/MusicToggle";
 import FloatingHearts from "./components/FloatingHearts";
 import ParticlesBackground from "./components/ParticlesBackground";
 import Countdown from "./components/Countdown";
-import ChatMemories from "./components/ChatMemories";
-import TamilQuotes from "./components/TamilQuotes";
 import PasswordPage from "./components/PasswordPage";
 import MemoryTimeline from "./components/MemoryTimeline";
-import HeartBeat from "./components/HeartBeat";
 import DailyQuotes from "./components/TamilQuotes";
+import CinematicReveal from "./components/NameReveal";
+import { createContext } from "react";
+import VoiceMemories from "./components/HeartBeat";
+
+export const AudioContext = createContext<any>(null);
 
 export default function App() {
+
   const [dark, setDark] = useState(true);
   const [unlocked, setUnlocked] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(true);
   const [showContent, setShowContent] = useState(false); // <-- controls content visibility
+  const [showCinematic, setShowCinematic] = useState(false);
 
   const songs = [
     "/saga.mp3",
@@ -54,6 +58,7 @@ export default function App() {
     }
   }, []);
 
+
   // Try autoplay, if blocked show overlay
   useEffect(() => {
     const audio = audioRef.current;
@@ -66,7 +71,6 @@ export default function App() {
         await audio.play();
         setShowContent(true); // autoplay allowed → show content immediately
       } catch {
-        console.log("else")
         setAutoplayBlocked(true); // autoplay blocked → show overlay
       }
     };
@@ -86,125 +90,133 @@ export default function App() {
 
         {/* Background */}
 
-        {showContent && (
-          <div
-            style={{
-              position: "fixed",
-              inset: 0,
-              width: "100vw",
-              height: "100vh",
-              zIndex: -1,
-              background: dark
-                ? "linear-gradient(135deg,#041f13,#0f3d2e,#1b5e20)"
-                : "linear-gradient(135deg,#ffd6ec,#e0ffe8)",
-            }}
-          />
-        )}
-        {showContent && (
-          <>
-            <ParticlesBackground />
-            <FloatingHearts />
-          </>
-        )}
         {/* Audio */}
-        <audio ref={audioRef} src={currentSong} loop />
-        {showContent && (
-          <>
-            {/* Controls */}
+        <AudioContext.Provider value={{ audioRef }}>
+          <audio ref={audioRef} src={currentSong} loop />
+          {showContent && !autoplayBlocked && (
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                marginTop: "20px",
-                gap: "8px",
+                position: "fixed",
+                inset: 0,
+                width: "100vw",
+                height: "100vh",
+                zIndex: -1,
+                background: dark
+                  ? "linear-gradient(135deg,#041f13,#0f3d2e,#1b5e20)"
+                  : "linear-gradient(135deg,#ffd6ec,#e0ffe8)",
               }}
-            >
-              <button className="btn" onClick={() => setDark(!dark)}>
-                Princess Switch
-              </button>
-              <MusicToggle audioRef={audioRef} />
-            </div>
-          </>
-        )}
+            />
+          )}
+          {showContent && !autoplayBlocked && (
+            <>
+              <ParticlesBackground />
+              <FloatingHearts />
+            </>
+          )}
+
+          {showContent && !autoplayBlocked && (
+            <>
+              {/* Controls */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  marginTop: "20px",
+                  gap: "8px",
+                }}
+              >
+                <button className="btn" onClick={() => setDark(!dark)}>
+                  Princess Switch
+                </button>
+                <MusicToggle audioRef={audioRef} />
+              </div>
+            </>
+          )}
 
 
-        {/* Overlay for autoplay block */}
-        {autoplayBlocked && (
-          <div
-            style={{
-              position: "fixed",
-              inset: 0,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              background: "radial-gradient(circle, rgba(255,182,193,0.6) 0%, rgba(75,0,130,0.85) 100%)",
-              backdropFilter: "blur(10px)",
-              color: "#fff0f5",
-              fontSize: "28px",
-              fontFamily: "'Cursive', 'Arial', sans-serif",
-              zIndex: 9999,
-              textAlign: "center",
-              padding: "30px",
-              cursor: "pointer",
-              flexDirection: "column",
-              animation: "fadeInOverlay 1.2s ease-out",
-            }}
-            onClick={handleOverlayClick}
-          >
-            <span style={{ fontSize: "3rem", marginBottom: "12px" }}>✨💖✨</span>
-            <span style={{ fontSize: "2rem" }}>Unlock Your Magical Surprise 🎁</span>
-            <span
+          {/* Overlay for autoplay block */}
+          {autoplayBlocked && (
+            <div
               style={{
-                marginTop: "15px",
-                fontSize: "2rem",
-                animation: "bounceArrow 1s infinite",
+                position: "fixed",
+                inset: 0,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                background: "radial-gradient(circle, rgba(255,182,193,0.6) 0%, rgba(75,0,130,0.85) 100%)",
+                backdropFilter: "blur(10px)",
+                color: "#fff0f5",
+                fontSize: "28px",
+                fontFamily: "'Cursive', 'Arial', sans-serif",
+                zIndex: 9999,
+                textAlign: "center",
+                padding: "30px",
+                cursor: "pointer",
+                flexDirection: "column",
+                animation: "fadeInOverlay 1.2s ease-out",
               }}
+              onClick={handleOverlayClick}
             >
-              🌟⬇️🌟
-            </span>
-            <span style={{ fontSize: "1.2rem", marginTop: "10px", opacity: 0.8 }}>
-              Just a tap… let the magic begin ✨
-            </span>
-          </div>
-        )}
+              <span style={{ fontSize: "3rem", marginBottom: "12px" }}>✨💖✨</span>
+              <span style={{ fontSize: "2rem" }}>Unlock Your Magical Surprise 🎁</span>
+              <span
+                style={{
+                  marginTop: "15px",
+                  fontSize: "2rem",
+                  animation: "bounceArrow 1s infinite",
+                }}
+              >
+                🌟⬇️🌟
+              </span>
+              <span style={{ fontSize: "1.2rem", marginTop: "10px", opacity: 0.8 }}>
+                Just a tap… let the magic begin ✨
+              </span>
+            </div>
+          )}
 
-        {/* Main content */}
-        {showContent && (
-          <>
-            <TypingIntro />
+          {/* Main content */}
+          {showContent && !autoplayBlocked && (
+            <>
+              <TypingIntro />
 
-            {!unlocked && (
-              <>
-                <Countdown
-                  unlockDate="2026-04-08"
-                  fromDate="2026-03-08"
-                  onUnlock={() => {
-                    setUnlocked(true);
-                    confetti({ particleCount: 150, spread: 100 });
-                    audioRef.current?.play();
-                  }}
-                  specialMessage="Counting down to your magical day 💗"
-                />
-                <DailyQuotes />
-              </>
-            )}
+              {!unlocked && (
+                <>
+                  <Countdown
+                    unlockDate="2026-04-08"
+                    fromDate="2026-03-08"
+                    onUnlock={() => {
+                      setUnlocked(true);
+                      setShowCinematic(true);
+                      confetti({ particleCount: 150, spread: 100 });
+                      audioRef.current?.play();
+                    }}
+                    specialMessage="Counting down to your magical day 💗"
+                  />
+                  <DailyQuotes />
+                  {showCinematic && (
+                    <CinematicReveal
+                      name="Pavithra"
+                      onComplete={() => setShowCinematic(false)}
+                    />
+                  )}
+                </>
+              )}
 
-            {unlocked && (
-              <>
-                {/* <BirthdayReveal name="Her Name" /> */}
-                <HeartBeat audioRef={audioRef} />
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
-                  <ChatMemories />
-                  <TamilQuotes />
-                  <MemoryTimeline />
-                </motion.div>
-                <PasswordPage />
-              </>
-            )}
-          </>
-        )}
+              {unlocked && (
+                <>
+
+                  <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
+                    <MemoryTimeline />
+                    <VoiceMemories />
+                  </motion.div>
+
+                </>
+              )}
+            </>
+          )}
+        </AudioContext.Provider>
       </div>
     </>
   );
