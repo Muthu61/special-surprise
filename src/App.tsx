@@ -14,6 +14,7 @@ import DailyQuotes from "./components/TamilQuotes";
 import CinematicReveal from "./components/NameReveal";
 import { createContext } from "react";
 import VoiceMemories from "./components/HeartBeat";
+import ProtectedCinematic from "./components/ProtectedCinematic";
 
 export const AudioContext = createContext<any>(null);
 
@@ -195,12 +196,6 @@ export default function App() {
                     specialMessage="Counting down to your magical day 💗"
                   />
                   <DailyQuotes />
-                  {/* {showCinematic && (
-                    <CinematicReveal
-                      name="Pavithra"
-                      onComplete={() => setShowCinematic(false)}
-                    />
-                  )} */}
                 </>
               )}
 
@@ -210,6 +205,7 @@ export default function App() {
                   <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
                     <MemoryTimeline />
                     <VoiceMemories />
+                    <ProtectedCinematic />
                   </motion.div>
 
                 </>

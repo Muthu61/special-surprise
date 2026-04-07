@@ -1,0 +1,86 @@
+/* src/components/CinematicFinal.css */
+
+.cinematic-container {
+    width: 100%;
+    min-height: 400px;
+    color: white;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    gap: 30px;
+    text-align: center;
+  
+    border-radius: 20px;
+    
+    transition: opacity 1s ease;
+  }
+  
+  /* Name */
+  .cinematic-name {
+    font-size: 48px;
+    color: #ff9ecf;
+    font-style: italic;
+    letter-spacing: 10px;
+    opacity: 0;
+    animation: nameReveal 2s forwards;
+  }
+  
+  /* Type text */
+
+  .type-text {
+    font-size: 25px;
+    color: #ff9ecf;
+    font-style: italic;
+    text-shadow: 0 0 10px #7CFFB2;
+    max-width: 500px;
+    line-height: 1.6;
+   /* ✅ allow wrapping */
+    white-space: normal;
+  
+    /* ✅ prevent cropping */
+    overflow: visible;
+   /* ✨ cursor */
+    border-right: 2px solid white;
+    padding-right: 5px;
+   animation: blink 1s infinite;
+  }
+
+  
+  /* Heart */
+  .cinematic-heart {
+    font-size: 42px;
+    animation: pulse 1.5s infinite;
+  }
+  
+  /* Animations */
+  @keyframes nameReveal {
+    from {
+      opacity: 0;
+      letter-spacing: 30px;
+    }
+    to {
+      opacity: 1;
+      letter-spacing: 10px;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Fade out */
+  .fade-out {
+    opacity: 0;
+    transition: opacity 2s ease;
+  }
