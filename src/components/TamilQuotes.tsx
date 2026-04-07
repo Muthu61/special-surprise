@@ -34,7 +34,7 @@ const quotes = [
   "3 days to go… Some people are easy to forget. You are not one of them.",
   "3 days to go… Almost your moment.",
   "2 days left…Your day is almost around the bend, just 2 more days to celebrate my friend",
-  "1 day to go… One step away from your special day,hope happiness comes your way!",
+  "Few hours to go… One step away from your special day, hope happiness comes your way!",
   "The wait is over. Today we celebrates you, this isn’t just about candles and wishes. It’s about celebrating the rare soul who makes life better just by existing. May your life always reflect the light you bring into others"
 ];
 

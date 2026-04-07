@@ -188,19 +188,19 @@ export default function App() {
                     fromDate="2026-03-08"
                     onUnlock={() => {
                       setUnlocked(true);
-                      setShowCinematic(true);
+                      // setShowCinematic(true);
                       confetti({ particleCount: 150, spread: 100 });
                       audioRef.current?.play();
                     }}
                     specialMessage="Counting down to your magical day 💗"
                   />
                   <DailyQuotes />
-                  {showCinematic && (
+                  {/* {showCinematic && (
                     <CinematicReveal
                       name="Pavithra"
                       onComplete={() => setShowCinematic(false)}
                     />
-                  )}
+                  )} */}
                 </>
               )}
 

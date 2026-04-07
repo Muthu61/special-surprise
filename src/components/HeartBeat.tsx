@@ -12,17 +12,37 @@ type Memory = {
 
 const memories: Memory[] = [
   {
-    text: "That random night you sang this… I didn’t expect it 🙂",
-    file: "/unfinished.mp3",
+    text: "Jan 18 💖",
+    file: "/yaarinda1.mp3",
   },
   {
-    text: "I still remember replaying this more than I should…",
-    file: "/neelothi.mp3",
+    text: "Jan 20 💖",
+    file: "/yaarinda2.mp3",
   },
   {
-    text: "This one just stayed with me for some reason 💖",
-    file: "/kannukulla.mp3",
+    text: "Feb 1 💖",
+    file: "/kanave1.mp3",
   },
+  {
+    text: "Feb 1 💖",
+    file: "/kanave2.mp3",
+  },
+  {
+    text: "Feb 18 💖",
+    file: "/sirukki1.mp3",
+  },
+  {
+    text: "Feb 18 💖",
+    file: "/sirukki2.mp3",
+  },
+  {
+    text: "Mar 1 💖",
+    file: "/thegidi1.mp3",
+  },
+  {
+    text: "Apr 5 💖",
+    file: "/jannal1.mp3",
+  }
 ];
 
 export default function VoiceMemories() {
@@ -67,8 +87,7 @@ export default function VoiceMemories() {
       <h2>Moments You Sang… 💖</h2>
 
       <p className="voice-intro">
-        These are not just songs…
-        they’re moments I didn’t want to forget 🙂
+        Just small moments with songs you sang 🙂
       </p>
 
       <div className="memory-list">
@@ -106,8 +125,7 @@ export default function VoiceMemories() {
       </div>
 
       <p className="voice-ending">
-        Maybe these were just small moments for you…
-        but for me, they became memories 🙂
+        Just some songs, some moments, some memories 🙂
       </p>
     </div>
   );
