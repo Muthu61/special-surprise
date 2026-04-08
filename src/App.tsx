@@ -94,7 +94,7 @@ export default function App() {
 
         {/* Audio */}
         <AudioContext.Provider value={{ audioRef }}>
-          <audio ref={audioRef} src={currentSong} loop />
+          
           {showContent && !autoplayBlocked && (
             <div
               style={{
