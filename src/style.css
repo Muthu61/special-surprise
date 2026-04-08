@@ -563,6 +563,9 @@ body {
   backdrop-filter: blur(10px);
   text-align: left;
   transition: all 0.3s ease;
+  @media screen and (max-width:767px){
+    width: 50%
+  }
 }
 
 .memory-card:hover {
