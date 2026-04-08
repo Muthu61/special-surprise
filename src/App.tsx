@@ -183,7 +183,7 @@ export default function App() {
             <>
               <TypingIntro />
 
-              {!unlocked && (
+              {unlocked && (
                 <>
                   <Countdown
                     unlockDate="2026-04-08"
