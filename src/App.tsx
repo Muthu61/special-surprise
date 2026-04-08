@@ -48,6 +48,7 @@ export default function App() {
       now.getDate() === birthdayDate.getDate() &&
       now.getMonth() === birthdayDate.getMonth()
     ) {
+      setUnlocked(true);
       setCurrentSong(birthdaySong);
     } else {
       const startDate = new Date("2026-03-08T00:00:00");
