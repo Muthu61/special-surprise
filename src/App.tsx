@@ -93,7 +93,7 @@ export default function App() {
         {/* Background */}
 
         {/* Audio */}
-        <AudioContext.Provider value={{ audioRef }}>
+        <AudioContext.Provider value={{ audioRef }
           
           {showContent && !autoplayBlocked && (
             <div
