@@ -564,7 +564,7 @@ body {
   text-align: left;
   transition: all 0.3s ease;
   @media screen and (max-width:767px){
-    width: 50%
+    width: 80%
   }
 }
 
